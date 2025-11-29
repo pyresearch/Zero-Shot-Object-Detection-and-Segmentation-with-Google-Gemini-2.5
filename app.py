@@ -5,7 +5,7 @@ from PIL import Image
 import supervision as sv
 
 # Set your API key (use environment variable for security)
-os.environ["GEMINI_API_KEY"] = "AIzaSyAye3z3gJJyyTMqRavDre-jBQ3jHRzJi00"  # Replace if setting via env
+os.environ["GEMINI_API_KEY"] = ""  # Replace if setting via env
 
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 
@@ -115,5 +115,6 @@ masks_annotator = sv.MaskAnnotator()
 annotated = image
 for annotator in (box_annotator, label_annotator, masks_annotator):
     annotated = annotator.annotate(scene=annotated, detections=detections)
+
 
 sv.plot_image(annotated)
